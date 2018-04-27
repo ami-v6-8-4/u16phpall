@@ -6,10 +6,14 @@ php:
   - "7.1" #7.1.12
 
 build: 
-
- ci:
-   - php --version
-   - docker pull shippabledocker/sample_node_pvt:ecr
+  pre_ci_boot:
+    image_name: drydock/u14phpall
+    image_tag: master
+    pull: true
+    
+  ci:
+    - php --version
+    - docker pull shippabledocker/sample_node_pvt:ecr
     
 integrations:
     
